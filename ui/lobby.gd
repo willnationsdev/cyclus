@@ -5,6 +5,7 @@ const DEFAULT_IPV4_ADDRESS = "127.0.0.1"
 export(String) var ip_address = DEFAULT_IPV4_ADDRESS
 export(int) var server_port = DEFAULT_PORT
 
+# to keep track of common connection and state information for players
 onready var gamestate = get_tree().get_root().get_node("root/gamestate")
 
 func _ready():
@@ -12,7 +13,7 @@ func _ready():
 
 func _on_host_button_down():
 	var host = NetworkedMultiplayerENet.new()
-	host.create_server(server_port, 2)
+	host.create_server(server_port, gamestate.MAX_PLAYERS)
 	get_tree().set_network_peer(host)
 	print("Connecting host...\nUnique Network ID: " + str(get_tree().get_network_unique_id())
 	+ "\nServer Port: " + str(server_port) + "\nIP Address: " +  ip_address)
@@ -22,8 +23,10 @@ func _on_join_button_down():
 	var host = NetworkedMultiplayerENet.new()
 	host.create_client(ip_address, server_port)
 	get_tree().set_network_peer(host)
-	print("Connecting client...\nUnique Network ID: " + str(get_tree().get_network_unique_id())
-	+ "\nServer Port: " + str(server_port) + "\nIP Address: " +  ip_address)
+	print("Connecting client..." +
+	"\nUnique Network ID: " + str(get_tree().get_network_unique_id()) +
+	"\nServer Port: " + str(server_port) + 
+	"\nIP Address: " +  ip_address)
 
 func _on_back_button_up():
 	# Cancel our hosting or our attempt to join

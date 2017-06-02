@@ -23,29 +23,30 @@ rect_scale = Vector2( 5, 5 )
 rect_clip_content = false
 mouse_filter = 2
 size_flags_vertical = 0
-text = "Fragmentime"
+text = "Cyclus"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="container" type="HBoxContainer" parent="menu_background"]
+[node name="button_grid" type="GridContainer" parent="menu_background"]
 
 margin_left = 159.0
 margin_top = 347.0
-margin_right = 884.0
-margin_bottom = 411.0
+margin_right = 887.0
+margin_bottom = 407.0
 rect_clip_content = false
 mouse_filter = 1
-custom_constants/separation = 180
-alignment = 1
+columns = 2
 
-[node name="local_multiplayer_button" type="Button" parent="menu_background/container"]
+[node name="local_multiplayer_button" type="Button" parent="menu_background/button_grid"]
 
-margin_right = 272.0
-margin_bottom = 64.0
+margin_right = 352.0
+margin_bottom = 26.0
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/side_margin = 0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -54,14 +55,15 @@ group = null
 text = "Local Multiplayer"
 flat = false
 
-[node name="online_multiplayer_button" type="Button" parent="menu_background/container"]
+[node name="online_multiplayer_button" type="Button" parent="menu_background/button_grid"]
 
-margin_left = 452.0
-margin_right = 725.0
-margin_bottom = 64.0
+margin_left = 366.0
+margin_right = 728.0
+margin_bottom = 26.0
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -69,6 +71,37 @@ group = null
 text = "Online Multiplayer"
 flat = false
 
-[connection signal="button_up" from="menu_background/container/online_multiplayer_button" to="." method="_on_online_multiplayer_button_button_up"]
+[node name="builder_button" type="Button" parent="menu_background/button_grid"]
+
+margin_top = 34.0
+margin_right = 352.0
+margin_bottom = 60.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Build A Deck"
+flat = false
+
+[node name="practice_button" type="Button" parent="menu_background/button_grid"]
+
+margin_left = 366.0
+margin_top = 34.0
+margin_right = 728.0
+margin_bottom = 60.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Practice Mode"
+flat = false
+
+[connection signal="button_up" from="menu_background/button_grid/online_multiplayer_button" to="." method="_on_online_multiplayer_button_button_up"]
 
 
