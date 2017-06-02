@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://data/gamestate.gd" type="Script" id=1]
+
+[node name="gamestate" type="Node"]
+
+script = ExtResource( 1 )
+
+

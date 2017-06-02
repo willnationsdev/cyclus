@@ -1,0 +1,229 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/lobby.gd" type="Script" id=1]
+[ext_resource path="res://UI/menu_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/ip_address_field.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[node name="lobby" type="Control"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 0
+script = ExtResource( 1 )
+ip_address = "127.0.0.1"
+server_port = 9080
+
+[node name="menu_background" parent="." instance=ExtResource( 2 )]
+
+[node name="host" type="Button" parent="menu_background"]
+
+margin_left = 57.0
+margin_top = 409.0
+margin_right = 212.0
+margin_bottom = 473.0
+rect_rotation = -0.18534
+rect_clip_content = false
+mouse_filter = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Host"
+flat = false
+
+[node name="back" type="Button" parent="menu_background"]
+
+margin_left = 791.0
+margin_top = 479.0
+margin_right = 946.0
+margin_bottom = 543.0
+rect_rotation = -0.18534
+rect_clip_content = false
+mouse_filter = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back"
+flat = false
+
+[node name="join" type="Button" parent="menu_background"]
+
+margin_left = 56.0
+margin_top = 488.0
+margin_right = 211.0
+margin_bottom = 552.0
+rect_clip_content = false
+mouse_filter = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Join"
+flat = false
+
+[node name="Panel" type="Panel" parent="menu_background"]
+
+margin_left = 42.0
+margin_top = 49.0
+margin_right = 972.0
+margin_bottom = 385.0
+rect_clip_content = false
+mouse_filter = 0
+
+[node name="Label" type="Label" parent="menu_background/Panel"]
+
+margin_left = 180.0
+margin_top = 81.0
+margin_right = 281.0
+margin_bottom = 95.0
+rect_scale = Vector2( 5, 5 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+text = "Table Of Rooms"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ip_address_box" type="VBoxContainer" parent="menu_background"]
+
+margin_left = 245.0
+margin_top = 415.0
+margin_right = 340.0
+margin_bottom = 456.0
+rect_clip_content = false
+hint_tooltip = "The IPv4 address (x.x.x.x) you wish to connect to"
+mouse_filter = 1
+custom_constants/separation = 5
+alignment = 0
+
+[node name="ip_address_label" type="Label" parent="menu_background/ip_address_box"]
+
+margin_right = 95.0
+margin_bottom = 14.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+text = "IP Address:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ip_address_field" type="LineEdit" parent="menu_background/ip_address_box"]
+
+margin_top = 19.0
+margin_right = 95.0
+margin_bottom = 41.0
+rect_clip_content = false
+mouse_filter = 0
+text = "127.0.0.1"
+expand_to_len = false
+focus_mode = 2
+placeholder_text = "x.x.x.x"
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+script = ExtResource( 3 )
+
+[node name="server_port_box" type="VBoxContainer" parent="menu_background"]
+
+margin_left = 385.0
+margin_top = 415.0
+margin_right = 480.0
+margin_bottom = 456.0
+rect_clip_content = false
+hint_tooltip = "The IPv4 address (x.x.x.x) you wish to connect to"
+mouse_filter = 1
+custom_constants/separation = 5
+alignment = 0
+
+[node name="server_port_label" type="Label" parent="menu_background/server_port_box"]
+
+margin_right = 95.0
+margin_bottom = 14.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+text = "Port:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="server_port_field" type="LineEdit" parent="menu_background/server_port_box"]
+
+margin_top = 19.0
+margin_right = 95.0
+margin_bottom = 41.0
+rect_clip_content = false
+mouse_filter = 0
+text = "9080"
+expand_to_len = false
+focus_mode = 2
+placeholder_text = "####"
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+script = ExtResource( 3 )
+
+[node name="username_box" type="VBoxContainer" parent="menu_background"]
+
+margin_left = 385.0
+margin_top = 500.0
+margin_right = 480.0
+margin_bottom = 541.0
+rect_clip_content = false
+hint_tooltip = "The IPv4 address (x.x.x.x) you wish to connect to"
+mouse_filter = 1
+custom_constants/separation = 5
+alignment = 0
+
+[node name="username_label" type="Label" parent="menu_background/username_box"]
+
+margin_right = 95.0
+margin_bottom = 14.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+text = "Username:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="username_field" type="LineEdit" parent="menu_background/username_box"]
+
+margin_top = 19.0
+margin_right = 95.0
+margin_bottom = 41.0
+rect_clip_content = false
+mouse_filter = 0
+expand_to_len = false
+focus_mode = 2
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+script = ExtResource( 3 )
+
+[node name="check_icon" type="TextureRect" parent="menu_background"]
+
+margin_left = 345.0
+margin_top = 428.0
+margin_right = 409.0
+margin_bottom = 492.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_clip_content = false
+mouse_filter = 1
+texture = ExtResource( 4 )
+stretch_mode = 0
+
+[connection signal="button_down" from="menu_background/host" to="." method="_on_host_button_down"]
+
+[connection signal="button_up" from="menu_background/back" to="." method="_on_back_button_up"]
+
+[connection signal="button_down" from="menu_background/join" to="." method="_on_join_button_down"]
+
+[connection signal="text_changed" from="menu_background/username_box/username_field" to="." method="_on_username_field_text_changed"]
+
+

@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/mainmenu.gd" type="Script" id=1]
+[ext_resource path="res://UI/menu_background.tscn" type="PackedScene" id=2]
+
+[node name="mainmenu" type="Control"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 0
+script = ExtResource( 1 )
+
+[node name="menu_background" parent="." instance=ExtResource( 2 )]
+
+[node name="title" type="Label" parent="menu_background"]
+
+margin_left = 297.0
+margin_top = 145.0
+margin_right = 383.0
+margin_bottom = 159.0
+rect_scale = Vector2( 5, 5 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+text = "Fragmentime"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="container" type="HBoxContainer" parent="menu_background"]
+
+margin_left = 159.0
+margin_top = 347.0
+margin_right = 884.0
+margin_bottom = 411.0
+rect_clip_content = false
+mouse_filter = 1
+custom_constants/separation = 180
+alignment = 1
+
+[node name="local_multiplayer_button" type="Button" parent="menu_background/container"]
+
+margin_right = 272.0
+margin_bottom = 64.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 3
+custom_constants/side_margin = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Local Multiplayer"
+flat = false
+
+[node name="online_multiplayer_button" type="Button" parent="menu_background/container"]
+
+margin_left = 452.0
+margin_right = 725.0
+margin_bottom = 64.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Online Multiplayer"
+flat = false
+
+[connection signal="button_up" from="menu_background/container/online_multiplayer_button" to="." method="_on_online_multiplayer_button_button_up"]
+
+
