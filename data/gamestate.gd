@@ -1,5 +1,8 @@
 extends Node
 
+# The set of players that are connected to the game.
+var player_info = {}
+
 # The information with me. This is just some sample data for now.
 var my_info = { username = "Will Nations" }
 
