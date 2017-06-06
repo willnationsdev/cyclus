@@ -7,11 +7,11 @@
 
 extends Node
 
-# Which player executed the operation
+# Which player executed the operation (multiplayer network unique ID)
 onready var player_id = 1
-# Which character the player was using when they executed the operation
+# Which character the player is using, if applicable
 onready var character_id = 1
-# Which team the player was on when they executed the operation
+# Which team the player is on, if applicable
 onready var team_id = 1
 # Which operation the player executed
 onready var op_name = ""
