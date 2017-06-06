@@ -1,13 +1,18 @@
-extends Node
-
+# This class is the most basic element of a turn-based game's state change.
 # Operations tell us...
-# 1. Who
-# 2. did what
-# 3. where
+# 1. Who (player_id, character_id, and team_id)
+# 2. did what (op_name)
+# 3. where (position)
 # 4. when (turn, step, and task)
+
+extends Node
 
 # Which player executed the operation
 onready var player_id = 1
+# Which character the player was using when they executed the operation
+onready var character_id = 1
+# Which team the player was on when they executed the operation
+onready var team_id = 1
 # Which operation the player executed
 onready var op_name = ""
 # Where the player executed it

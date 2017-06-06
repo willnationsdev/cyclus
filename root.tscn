@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
-[ext_resource path="res://data/gamestate.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/mainmenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/lobby.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/builder.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ui/design_game_mode.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/main_menu/main_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/lobby/lobby.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/builder/builder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/design_game_mode.tscn" type="PackedScene" id=5]
 
 [node name="root" type="Control"]
 
@@ -13,34 +12,12 @@ rect_clip_content = false
 mouse_filter = 0
 script = ExtResource( 1 )
 
-[node name="gamestate" parent="." instance=ExtResource( 2 )]
+[node name="main_menu" parent="." instance=ExtResource( 2 )]
 
-[node name="world" type="Node2D" parent="."]
+[node name="lobby" parent="." instance=ExtResource( 3 )]
 
-[node name="map" type="TileMap" parent="world"]
+[node name="builder" parent="." instance=ExtResource( 4 )]
 
-mode = 0
-tile_set = null
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layers = 1
-collision_mask = 1
-occluder_light_mask = 1
-tile_data = PoolIntArray(  )
-
-[node name="mainmenu" parent="." instance=ExtResource( 3 )]
-
-[node name="lobby" parent="." instance=ExtResource( 4 )]
-
-[node name="builder" parent="." instance=ExtResource( 5 )]
-
-[node name="practice" parent="." instance=ExtResource( 6 )]
+[node name="practice" parent="." instance=ExtResource( 5 )]
 
 

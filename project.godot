@@ -1,11 +1,14 @@
 config_version=3
-config_version=null
-
 [application]
 
 name="Cyclus"
 main_scene="res://root.tscn"
 icon="res://icon.png"
+
+[autoload]
+
+NETWORK="*res://data/network.tscn"
+GAMESTATE="*res://data/gamestate.tscn"
 
 [memory]
 

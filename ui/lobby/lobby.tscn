@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI/lobby.gd" type="Script" id=1]
-[ext_resource path="res://UI/menu_background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/ip_address_field.gd" type="Script" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://ui/lobby/lobby.gd" type="Script" id=1]
+[ext_resource path="res://ui/menu_background/menu_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/lobby/ip_address_field.gd" type="Script" id=3]
 
 [node name="lobby" type="Control"]
 
@@ -90,10 +89,10 @@ max_lines_visible = -1
 
 [node name="ip_address_box" type="VBoxContainer" parent="menu_background"]
 
-margin_left = 245.0
-margin_top = 415.0
-margin_right = 340.0
-margin_bottom = 456.0
+margin_left = 250.0
+margin_top = 499.0
+margin_right = 337.0
+margin_bottom = 546.0
 rect_clip_content = false
 hint_tooltip = "The IPv4 address (x.x.x.x) you wish to connect to"
 mouse_filter = 1
@@ -102,7 +101,7 @@ alignment = 0
 
 [node name="ip_address_label" type="Label" parent="menu_background/ip_address_box"]
 
-margin_right = 95.0
+margin_right = 87.0
 margin_bottom = 14.0
 rect_clip_content = false
 mouse_filter = 2
@@ -115,8 +114,8 @@ max_lines_visible = -1
 [node name="ip_address_field" type="LineEdit" parent="menu_background/ip_address_box"]
 
 margin_top = 19.0
-margin_right = 95.0
-margin_bottom = 41.0
+margin_right = 87.0
+margin_bottom = 33.0
 rect_clip_content = false
 mouse_filter = 0
 text = "127.0.0.1"
@@ -126,14 +125,13 @@ placeholder_text = "x.x.x.x"
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
-script = ExtResource( 3 )
 
 [node name="server_port_box" type="VBoxContainer" parent="menu_background"]
 
-margin_left = 385.0
-margin_top = 415.0
-margin_right = 480.0
-margin_bottom = 456.0
+margin_left = 460.0
+margin_top = 497.0
+margin_right = 555.0
+margin_bottom = 538.0
 rect_clip_content = false
 hint_tooltip = "The IPv4 address (x.x.x.x) you wish to connect to"
 mouse_filter = 1
@@ -156,7 +154,7 @@ max_lines_visible = -1
 
 margin_top = 19.0
 margin_right = 95.0
-margin_bottom = 41.0
+margin_bottom = 33.0
 rect_clip_content = false
 mouse_filter = 0
 text = "9080"
@@ -170,10 +168,10 @@ script = ExtResource( 3 )
 
 [node name="username_box" type="VBoxContainer" parent="menu_background"]
 
-margin_left = 385.0
-margin_top = 500.0
-margin_right = 480.0
-margin_bottom = 541.0
+margin_left = 457.0
+margin_top = 418.0
+margin_right = 552.0
+margin_bottom = 459.0
 rect_clip_content = false
 hint_tooltip = "The IPv4 address (x.x.x.x) you wish to connect to"
 mouse_filter = 1
@@ -196,7 +194,7 @@ max_lines_visible = -1
 
 margin_top = 19.0
 margin_right = 95.0
-margin_bottom = 41.0
+margin_bottom = 33.0
 rect_clip_content = false
 mouse_filter = 0
 expand_to_len = false
@@ -205,18 +203,6 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 script = ExtResource( 3 )
-
-[node name="check_icon" type="TextureRect" parent="menu_background"]
-
-margin_left = 345.0
-margin_top = 428.0
-margin_right = 409.0
-margin_bottom = 492.0
-rect_scale = Vector2( 0.5, 0.5 )
-rect_clip_content = false
-mouse_filter = 1
-texture = ExtResource( 4 )
-stretch_mode = 0
 
 [connection signal="button_down" from="menu_background/host" to="." method="_on_host_button_down"]
 

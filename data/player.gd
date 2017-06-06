@@ -1,10 +1,7 @@
+# This class embodies an individual player character (if there is one)
+# This class is not relevant to the Cyclus project for CGA Jam 2017
+
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass

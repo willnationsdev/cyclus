@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://UI/mainmenu.gd" type="Script" id=1]
-[ext_resource path="res://UI/menu_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/main_menu/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://ui/menu_background/menu_background.tscn" type="PackedScene" id=2]
 
 [node name="mainmenu" type="Control"]
 
@@ -34,15 +34,17 @@ max_lines_visible = -1
 margin_left = 159.0
 margin_top = 347.0
 margin_right = 887.0
-margin_bottom = 407.0
+margin_bottom = 455.0
 rect_clip_content = false
 mouse_filter = 1
+custom_constants/vseparation = 11
+custom_constants/hseparation = 18
 columns = 2
 
 [node name="local_multiplayer_button" type="Button" parent="menu_background/button_grid"]
 
-margin_right = 352.0
-margin_bottom = 26.0
+margin_right = 350.0
+margin_bottom = 48.0
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 3
@@ -57,9 +59,9 @@ flat = false
 
 [node name="online_multiplayer_button" type="Button" parent="menu_background/button_grid"]
 
-margin_left = 366.0
+margin_left = 368.0
 margin_right = 728.0
-margin_bottom = 26.0
+margin_bottom = 48.0
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 3
@@ -73,9 +75,9 @@ flat = false
 
 [node name="builder_button" type="Button" parent="menu_background/button_grid"]
 
-margin_top = 34.0
-margin_right = 352.0
-margin_bottom = 60.0
+margin_top = 59.0
+margin_right = 350.0
+margin_bottom = 107.0
 rect_clip_content = false
 mouse_filter = 0
 size_flags_vertical = 3
@@ -88,10 +90,10 @@ flat = false
 
 [node name="practice_button" type="Button" parent="menu_background/button_grid"]
 
-margin_left = 366.0
-margin_top = 34.0
+margin_left = 368.0
+margin_top = 59.0
 margin_right = 728.0
-margin_bottom = 60.0
+margin_bottom = 107.0
 rect_clip_content = false
 mouse_filter = 0
 size_flags_vertical = 3
