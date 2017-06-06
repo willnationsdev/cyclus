@@ -8,6 +8,7 @@ func _ready():
 	#print("builder is a canvasitem: " + get_node("builder").is_type("CanvasItem"))
 	for node in get_children():
 		if (node.get_name() != "main_menu"):
+		# if (node extends CanvasItem):
 			node.hide()
 		else:
 			node.show()

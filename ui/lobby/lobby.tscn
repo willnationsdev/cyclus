@@ -165,6 +165,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 script = ExtResource( 3 )
+lobby = "../../lobby"
 
 [node name="username_box" type="VBoxContainer" parent="menu_background"]
 
@@ -203,6 +204,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 script = ExtResource( 3 )
+lobby = "../../lobby"
 
 [connection signal="button_down" from="menu_background/host" to="." method="_on_host_button_down"]
 
