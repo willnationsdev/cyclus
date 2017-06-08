@@ -10,7 +10,9 @@ extents = Vector2( 61.44, 61.7386 )
 
 [node name="tileset" type="Node2D"]
 
-[node name="gridcell" type="Sprite" parent="."]
+[node name="gridcell" type="Sprite" parent="." groups=[
+"tile",
+]]
 
 position = Vector2( 64, 64 )
 texture = ExtResource( 1 )
@@ -36,7 +38,9 @@ shape = SubResource( 1 )
 trigger = true
 _update_shape_index = 0
 
-[node name="fullgridcell" type="Sprite" parent="."]
+[node name="fullgridcell" type="Sprite" parent="." groups=[
+"tile",
+]]
 
 position = Vector2( 320, 64 )
 texture = ExtResource( 2 )

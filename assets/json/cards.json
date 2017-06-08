@@ -1,0 +1,111 @@
+{
+    "effects": [{
+            "name": "damage", //the target takes X damage
+            "params": [
+                "value" //- the amount of damage to deal
+            ]
+        },
+        {
+            "name": "heal", //the taget heals X damage
+            "params": [
+                "value" //- the amount of damage to heal
+            ]
+        },
+        {
+            "name": "spawn_bomb", //spawns a bomb terrain that explodes when entered
+            "params": []
+        },
+        {
+            "name": "spawn_pillar", //spawns a pillar terrain that blocks movement and line-of-sight attacks
+            "params": []
+        },
+        {
+            "name": "void", //removes phantoms and terrain from a space
+            "params": []
+        },
+        {
+            "name": "teleport", //moves the current character to a different space, skipping obstructions. Cannot land on another character.
+            "params": [
+                "location" //- the location to teleport to
+            ]
+        },
+        {
+            "name": "move", //moves the current character to a different space, stopping if obstructed.
+            "params": [
+                "location" //- the location to move towards
+            ]
+        },
+        {
+            "name": "terraform", //changes a terrain from one type to another
+            "params": [
+                "location", //- the location in which to change the terrain
+                "type" //- the type of terrain that should be placed there
+            ]
+        },
+        {
+            "name": "durable", //until end of turn, you do not take damage
+            "params": []
+        }
+    ],
+    "skill": [
+        /*
+            name = the name of the skill as it appears in-game
+            range = the area from the user that the target must fall within in order to use this skill
+            region = the area that is affected by the skill
+            anim = the sprite animation that is used for this skill
+            effects = the sequence of effects that are triggered on all of those hit by the skill
+        */
+        {
+            "name": "create_bomb",
+            "range": { "shape": "radius", "value": 4 },
+            "region": { "shape": "point" },
+            "anim": "res://assets/textures/",
+            "effects": [
+                "spawn_bomb"
+            ]
+        },
+        {
+            //to be triggered by spawned bombs
+            "name": "explosion",
+            "range": { "shape": "radius", "value": 2 },
+            "region": { "shape": "point" },
+            "anim": "res://assets/textures/",
+            "effects": [
+                "void",
+                "damage"
+            ]
+        },
+        {
+            "name": "teleport",
+            "range": { "shape": "radius", "value": 2 },
+            "region": { "shape": "point" },
+            "anim": "res://assets/textures/",
+            "effects": [
+                "void",
+                "damage"
+            ]
+        }
+    ],
+    "cards": [
+        /*
+            name = the name of the card as it appears in-game
+            cost = the number of points consumed to use the skill
+        */
+        {
+            "name": "Plant Bomb",
+            "cost": 1,
+            "icon": "res://assets/textures/",
+            "skills": ["create_bomb"]
+        },
+        {
+            "name": "Warp Field",
+            "icon": "res://assets/textures/",
+            "skills": ["teleport"]
+        },
+        {
+            "name": "Bulldoze",
+            "icon": "res://assets/textures/",
+            "skills": ["bulldoze"]
+        }
+    ]
+}

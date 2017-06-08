@@ -9,18 +9,21 @@
 script/source = "extends TileMap
 
 export (NodePath) var world = \"..\"
-# class member variables go here, for example:
-# var a = 2
-# var b = \"textvar\"
+
+# var world_text = \"..\"
+# var world_nodepath = @\"..\"
+# var world_node = $\"..\"
+# print(\"text: \", typeof(world_text)) #.. / 4
+# print(\"nodepath: \", typeof(world_nodepath)) #.. / 16
+# print(\"node: \", typeof(world_node)) #[Node2D:677] / 18
+# print($\"..\")
 
 func _ready():
-	var world_text = \"..\"
-	var world_nodepath = @\"..\"
-	var world_node = $\"..\"
-	print(\"text: \", typeof(world_text)) #.. / 4
-	print(\"nodepath: \", typeof(world_nodepath)) #.. / 16
-	print(\"node: \", typeof(world_node)) #[Node2D:677] / 18
-	print($\"..\")
+	set_process_input(true)
+
+func _input(event):
+	if event.is_pressed(KEY_F):
+		print(\"hi\")
 "
 
 [node name="world" type="Node2D"]

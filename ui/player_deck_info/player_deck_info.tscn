@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/player_deck_info/player_deck_info.gd" type="Script" id=1]
+[ext_resource path="res://ui/menu_background/menu_background.tscn" type="PackedScene" id=2]
+
+[node name="player_deck_info" type="Control"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 0
+script = ExtResource( 1 )
+
+[node name="menu_background" parent="." instance=ExtResource( 2 )]
+
+[node name="player_container" type="VBoxContainer" parent="menu_background"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 1
+alignment = 0
+
+[node name="player_title" type="Label" parent="menu_background/player_container"]
+
+margin_right = 40.0
+margin_bottom = 14.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="deck_data" type="VBoxContainer" parent="menu_background/player_container"]
+
+margin_top = 14.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_clip_content = false
+mouse_filter = 1
+alignment = 0
+
+[node name="deck_cards" type="VBoxContainer" parent="menu_background/player_container/deck_data"]
+
+margin_right = 40.0
+rect_clip_content = false
+mouse_filter = 1
+alignment = 0
+
+[node name="deck_stats" type="VBoxContainer" parent="menu_background/player_container/deck_data"]
+
+margin_right = 40.0
+rect_clip_content = false
+mouse_filter = 1
+alignment = 0
+
+

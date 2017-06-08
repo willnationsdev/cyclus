@@ -1,6 +1,4 @@
 config_version=3
-config_version=null
-
 [application]
 
 name="Cyclus"
@@ -11,6 +9,7 @@ icon="res://icon.png"
 
 NETWORK="*res://data/network.tscn"
 GAMESTATE="*res://data/gamestate.tscn"
+CARDS="*res://data/cards.tscn"
 
 [memory]
 
