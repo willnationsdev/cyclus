@@ -13,15 +13,28 @@
         },
         {
             "name": "spawn_bomb", //spawns a bomb terrain that explodes when entered
-            "params": []
+            "params": [
+                "location" // the location in which to spawn a bomb
+            ]
         },
         {
             "name": "spawn_pillar", //spawns a pillar terrain that blocks movement and line-of-sight attacks
-            "params": []
+            "params": [
+                "location" // the location in which to spawn a pillar
+            ]
+        },
+        {
+            "name": "spawn_warp", //spawns a warp terrain that teleports content to another non-warp terrain (bombs and pillars are also redirected)
+            "params": [
+                "location", // the location in which to spawn a warp
+                "teleport_location" // the location to which the warp teleports
+            ]
         },
         {
             "name": "void", //removes phantoms and terrain from a space
-            "params": []
+            "params": [
+                "location" // the location in which to remove elements
+            ]
         },
         {
             "name": "teleport", //moves the current character to a different space, skipping obstructions. Cannot land on another character.
@@ -45,19 +58,39 @@
         {
             "name": "durable", //until end of turn, you do not take damage
             "params": []
+        },
+        {
+            "name": "trigger",
+            "params": [
+                "skill_name"
+            ]
         }
     ],
     "skill": [
         /*
             name = the name of the skill as it appears in-game
             range = the area from the user that the target must fall within in order to use this skill
-            region = the area that is affected by the skill
             anim = the sprite animation that is used for this skill
             effects = the sequence of effects that are triggered on all of those hit by the skill
         */
         {
             "name": "create_bomb",
-            "range": { "shape": "radius", "value": 4 },
+            "region": { "shape": "point" },
+            "anim": "res://assets/textures/",
+            "effects": [
+                "spawn_bomb"
+            ]
+        },
+        {
+            "name": "create_pillar",
+            "region": { "shape": "point" },
+            "anim": "res://assets/textures/",
+            "effects": [
+                "spawn_pillar"
+            ]
+        },
+        {
+            "name": "create_warp_field",
             "region": { "shape": "point" },
             "anim": "res://assets/textures/",
             "effects": [
@@ -77,7 +110,6 @@
         },
         {
             "name": "teleport",
-            "range": { "shape": "radius", "value": 2 },
             "region": { "shape": "point" },
             "anim": "res://assets/textures/",
             "effects": [
@@ -89,23 +121,42 @@
     "cards": [
         /*
             name = the name of the card as it appears in-game
+            description = the text description of the card as it appears in-game
             cost = the number of points consumed to use the skill
+            region = the area that is affected by the skill
         */
         {
-            "name": "Plant Bomb",
+            "name": "Spawn Bomb",
+            "description": "SPAWNS a Bomb tile.\nBombs deal 1 damage to characters who enter them.\nBombs explode on Pillars",
             "cost": 1,
-            "icon": "res://assets/textures/",
-            "skills": ["create_bomb"]
+            "range": { "shape": "radius", "value": 2 },
+            "icon": "res://assets/textures/spawn_bomb_icon.tres",
+            "skills": ["create_bomb"],
+            "character_anim": "slam"
+        },
+        {
+            "name": "Spawn Pillar",
+            "description": "SPAWNS a Pillar tile.\nPillars block movement.",
+            "cost": 1,
+            "icon": "res://assets/textures/spawn_pillar_icon.tres",
+            "skills": ["create_bomb"],
+            "character_anim": "cast"
         },
         {
             "name": "Warp Field",
+            "description": "Create a warp field",
+            "cost": 1,
             "icon": "res://assets/textures/",
-            "skills": ["teleport"]
+            "skills": ["teleport"],
+            "character_anim": "focus"
         },
         {
             "name": "Bulldoze",
+            "description": "",
+            "cost": 2,
             "icon": "res://assets/textures/",
-            "skills": ["bulldoze"]
+            "skills": ["bulldoze"],
+            "character_anim": "charge"
         }
     ]
 }

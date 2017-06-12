@@ -19,11 +19,7 @@ export (NodePath) var world = \"..\"
 # print($\"..\")
 
 func _ready():
-	set_process_input(true)
-
-func _input(event):
-	if event.is_pressed(KEY_F):
-		print(\"hi\")
+	pass
 "
 
 [node name="world" type="Node2D"]

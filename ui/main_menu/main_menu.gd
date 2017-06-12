@@ -5,4 +5,4 @@ func _ready():
 
 func _on_online_multiplayer_button_button_up():
 	hide()
-	get_node("../lobby").show()
+	$"../lobby".show()
