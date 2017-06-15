@@ -1,62 +1,62 @@
 {
     "effects": [{
-            "name": "damage", //the target takes X damage
+            "name": "damage",
             "params": [
-                "value" //- the amount of damage to deal
+                "value"
             ]
         },
         {
-            "name": "heal", //the taget heals X damage
+            "name": "heal",
             "params": [
-                "value" //- the amount of damage to heal
+                "value"
             ]
         },
         {
-            "name": "spawn_bomb", //spawns a bomb terrain that explodes when entered
+            "name": "spawn_bomb",
             "params": [
-                "location" // the location in which to spawn a bomb
+                "location"
             ]
         },
         {
-            "name": "spawn_pillar", //spawns a pillar terrain that blocks movement and line-of-sight attacks
+            "name": "spawn_pillar",
             "params": [
-                "location" // the location in which to spawn a pillar
+                "location"
             ]
         },
         {
-            "name": "spawn_warp", //spawns a warp terrain that teleports content to another non-warp terrain (bombs and pillars are also redirected)
+            "name": "spawn_warp",
             "params": [
-                "location", // the location in which to spawn a warp
-                "teleport_location" // the location to which the warp teleports
+                "location",
+                "teleport_location"
             ]
         },
         {
-            "name": "void", //removes phantoms and terrain from a space
+            "name": "void",
             "params": [
-                "location" // the location in which to remove elements
+                "location"
             ]
         },
         {
-            "name": "teleport", //moves the current character to a different space, skipping obstructions. Cannot land on another character.
+            "name": "teleport",
             "params": [
-                "location" //- the location to teleport to
+                "location"
             ]
         },
         {
-            "name": "move", //moves the current character to a different space, stopping if obstructed.
+            "name": "move",
             "params": [
-                "location" //- the location to move towards
+                "location"
             ]
         },
         {
-            "name": "terraform", //changes a terrain from one type to another
+            "name": "terraform",
             "params": [
-                "location", //- the location in which to change the terrain
-                "type" //- the type of terrain that should be placed there
+                "location",
+                "type"
             ]
         },
         {
-            "name": "durable", //until end of turn, you do not take damage
+            "name": "durable",
             "params": []
         },
         {
@@ -67,12 +67,6 @@
         }
     ],
     "skill": [
-        /*
-            name = the name of the skill as it appears in-game
-            range = the area from the user that the target must fall within in order to use this skill
-            anim = the sprite animation that is used for this skill
-            effects = the sequence of effects that are triggered on all of those hit by the skill
-        */
         {
             "name": "create_bomb",
             "region": { "shape": "point" },
@@ -98,7 +92,6 @@
             ]
         },
         {
-            //to be triggered by spawned bombs
             "name": "explosion",
             "range": { "shape": "radius", "value": 2 },
             "region": { "shape": "point" },
@@ -119,12 +112,6 @@
         }
     ],
     "cards": [
-        /*
-            name = the name of the card as it appears in-game
-            description = the text description of the card as it appears in-game
-            cost = the number of points consumed to use the skill
-            region = the area that is affected by the skill
-        */
         {
             "name": "Spawn Bomb",
             "description": "SPAWNS a Bomb tile.\nBombs deal 1 damage to characters who enter them.\nBombs explode on Pillars",

@@ -3,7 +3,15 @@
 
 extends Node
 
-var data = { hi="test" }
+var data = {hi="data"}
 
 func _ready():
-    print(data)
+	var f = File.new()
+	f.open("res://assets/json/cards.json", File.READ)
+	print(f.is_open())
+	data = parse_json(f.get_as_text())
+	for d in data['effects']:
+		print("Name: ", d['name'])
+		print("Parameters...")
+		for p in d['params']:
+			print(p)
