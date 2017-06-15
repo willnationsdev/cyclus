@@ -3,10 +3,7 @@
 
 extends Node
 
-var data = {}
+var data = { hi="test" }
 
 func _ready():
-    var cards_json = File.new()
-    cards_json.open("res://assets/json/cards.json", File.READ)
-    data.parse_json(cards_json.get_as_text())
     print(data)
