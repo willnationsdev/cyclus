@@ -1,4 +1,6 @@
 config_version=3
+config_version=null
+
 [application]
 
 name="Cyclus"
@@ -7,8 +9,10 @@ icon="res://icon.png"
 
 [autoload]
 
+SETTINGS="*res://data/settings.gd"
 NETWORK="*res://data/network.tscn"
 GAMESTATE="*res://data/gamestate.tscn"
+SKILLS="*res://skillsystem/skillSystem.gd"
 CARDS="*res://data/cards.tscn"
 
 [memory]

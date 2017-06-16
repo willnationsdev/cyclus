@@ -1,6 +1,18 @@
-# This singleton manages all information regarding the grid, level layout, and characters on the grid.
+
+# This manages all information regarding the grid, level layout, and characters on the grid.
 
 extends Node2D
 
 func _ready():
 	pass
+
+func set_terrain(location, type):
+	if type == "bomb":
+		pass
+	elif type == "warp":
+		pass
+	elif type == "pillar":
+		pass
+	else:
+		pass
+

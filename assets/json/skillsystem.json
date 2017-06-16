@@ -66,8 +66,7 @@
             ]
         }
     ],
-    "skill": [
-        {
+    "skills": [{
             "name": "create_bomb",
             "region": { "shape": "point" },
             "anim": "res://assets/textures/",
@@ -111,8 +110,7 @@
             ]
         }
     ],
-    "cards": [
-        {
+    "cards": [{
             "name": "Spawn Bomb",
             "description": "SPAWNS a Bomb tile.\nBombs deal 1 damage to characters who enter them.\nBombs explode on Pillars",
             "cost": 1,
