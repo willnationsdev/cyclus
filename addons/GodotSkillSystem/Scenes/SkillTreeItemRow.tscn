@@ -1,0 +1,39 @@
+[gd_scene format=2]
+
+[node name="SkillTreeItemRow" type="Control"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 0
+
+[node name="Row" type="HBoxContainer" parent="."]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 1
+alignment = 0
+
+[node name="Icon" type="TextureRect" parent="Row"]
+
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 1
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Row"]
+
+margin_left = 4.0
+margin_top = 13.0
+margin_right = 82.0
+margin_bottom = 27.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_vertical = 0
+text = "Sample Text"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

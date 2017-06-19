@@ -37,7 +37,7 @@ func _enter_tree():
 	add_custom_type("SkillUser",       "Node", SkillUser,       SkillUserIcon)
 	add_custom_type("SkillSystem",     "Node", SkillSystem,     SkillSystemIcon)
 
-	skillSystemTool = preload("res://addons/GodotSkillSystem/SkillSystemTool.tscn").instance()
+	skillSystemTool = preload("res://addons/GodotSkillSystem/Scenes/SkillSystemTool.tscn").instance()
 	get_editor_viewport().add_child(skillSystemTool)
 
 func _exit_tree():

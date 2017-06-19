@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="SkillDataView" type="Control"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 0
+
+
