@@ -4,6 +4,7 @@
 extends Node2D
 
 func _ready():
+	print("test")
 	pass
 
 func set_terrain(location, type):

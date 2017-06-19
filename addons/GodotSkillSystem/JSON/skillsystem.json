@@ -1,0 +1,355 @@
+{
+    "effects": {
+        "damage": {
+            "name": "damage",
+            "params": {
+                "source": [ "value" ],
+                "target": [ "health" ],
+                "env": [],
+                "input": []
+            },
+            "signals": [
+                "testAttacked",
+                "testDamaged",
+                "attacked",
+                "damaged"
+            ]
+        },
+        "heal": {
+            "name": "heal",
+            "params": {
+                "source": [ "value" ],
+                "target": [ "health" ],
+                "env": [],
+                "input": []
+            },
+            "signals": [
+                "testHealing",
+                "testHealed",
+                "healing",
+                "healed"
+            ]
+        },
+        "spawnBomb": {
+            "name": "spawnBomb",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [ "position" ],
+                "input": []
+            },
+            "signals":[
+                "testSpawned",
+                "spawned"
+            ]
+        },
+        "spawnPillar": {
+            "name": "spawnPillar",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [ "position" ],
+                "input": []
+            },
+            "signals":[
+                "testSpawned",
+                "spawned"
+            ]
+        },
+        "spawnWarp": {
+            "name": "spawnWarp",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [ "position" ],
+                "input": [ "teleportPosition" ]
+            },
+            "signals":[
+                "testSpawned",
+                "spawned"
+            ]
+        },
+        "clearTerrain": {
+            "name": "clearTerrain",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [ "position" ],
+                "input": []
+            },
+            "signals":[
+                "testCleared",
+                "cleared"
+            ]
+        },
+        "teleport": {
+            "name": "teleport",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [],
+                "input": [ "teleportPosition" ]
+            },
+            "signals": [
+                "testTeleported",
+                "teleported"
+            ]
+        },
+        "move": {
+            "name": "move",
+            "params": {
+                "source": [ "position" ],
+                "target": [],
+                "env": [ "movementRange" ],
+                "input": [ "position" ]
+            },
+            "signals": [
+                "testStepped",
+                "testObstructed",
+                "testArrived",
+                "stepped",
+                "obstructed",
+                "arrived"
+            ]
+        },
+        "terraform": {
+            "name": "terraform",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [ "position", "availableTypes" ],
+                "input": [ "type" ]
+            },
+            "signals":[
+                "testTerraformed",
+                "terraformed"
+            ]
+        },
+        "durable": {
+            "name": "durable",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [],
+                "input": []
+            },
+            "signals":[
+                "testEndured",
+                "endured"
+            ]
+        },
+        "trigger": {
+            "name": "trigger",
+            "params": {
+                "source": [],
+                "target": [],
+                "env": [ "skillName" ],
+                "input": []
+            }
+        }
+    },
+    "targetingMethods": {
+        "pointBox2DSnap": {
+            "name": "pointBox2DSnap",
+            "region": {
+                "shape": "box",
+                "units": 1
+            },
+            "dim": "2D",
+            "snapToGrid": true,
+            "input": true,
+            "obstructable": false,
+            "params":[
+                "position"
+            ],
+            "trigger": []
+        },
+        "circle2DSnap": {
+            "name": "circle2DSnap",
+            "region": {
+                "shape": "circle",
+                "units": null
+            },
+            "dim": "2D",
+            "snapToGrid": true,
+            "input": true,
+            "obstructable": null,
+            "params":[
+                "position",
+                "units",
+                "obstructable"
+            ],
+            "trigger": []
+        },
+        "directional2DSnap": {
+            "name": "directional2DSnap",
+            "region": {
+                "shape": "line",
+                "units": null
+            },
+            "dim": "2D",
+            "snapToGrid": true,
+            "input": true,
+            "obstructable": null,
+            "params":[
+                "position",
+                "units",
+                "obstructable",
+                "direction"
+            ],
+            "trigger": []
+        }
+    },
+    "animations": {
+        "plant": {
+            "name": "plant",
+            "path": "res://animations/"
+        },
+        "cast": {
+            "name": "cast",
+            "path": "res://animations/"
+        },
+        "focus": {
+            "name": "focus",
+            "path": "res://animations/"
+        },
+        "charge": {
+            "name": "charge",
+            "path": "res://animations/"
+        }
+    },
+    "elements": {
+        "createBomb": {
+            "name": "createBomb",
+            "reqs": {},
+            "targetingMethod": {
+                "name": "pointBox2DSnap",
+                "position": null
+            },
+            "effects": [
+                { "name": "spawnBomb" }
+            ]
+        },
+        "createPillar": {
+            "name": "createPillar",
+            "reqs": {},
+            "targetingMethod": {
+                "name": "pointBox2DSnap",
+                "position": null
+            },
+            "effects": [
+                { "name": "spawnPillar" }
+            ]
+        },
+        "createWarpField": {
+            "name": "createWarpField",
+            "reqs": {},
+            "targetingMethod": {
+                "name": "pointBox2DSnap",
+                "position": null
+            },
+            "effects": [
+                { "name": "spawnWarp" }
+            ]
+        },
+        "explosion": {
+            "name": "explosion",
+            "reqs": {},
+            "targetingMethod": {
+                "name": "circle2DSnap",
+                "units": null,
+                "position": null
+            },
+            "effects": [
+                { "name": "clearTerrain" },
+                { "name": "damage" }
+            ]
+        },
+        "move2DSnap": {
+            "name": "move2DSnap",
+            "reqs": { "occupied": false },
+            "targetingMethod": {
+                "name": "circle2DSnap",
+                "units": null,
+                "position": null
+            },
+            "effects":[
+                { "name": "move" }
+            ]
+        },
+        "teleport2DSnap": {
+            "name": "teleport2DSnap",
+            "reqs": { "occupied": false },
+            "targetingMethod": {
+                "name": "pointBox2DSnap",
+                "position": null
+            },
+            "effects": [
+                { "name": "clearTerrain" }
+            ]
+        }
+    },
+    "skills": {
+        "Spawn Bomb": {
+            "name": "Spawn Bomb",
+            "description": "SPAWNS a Bomb on a tile.\nBombs deal 1 damage to characters who enter them.\nBombs explode on Pillars",
+            "cost": 1,
+            "range": { "name": "circle2DSnap", "units": 2 },
+            "icon": "res://assets/textures/spawn_bomb_icon.tres",
+            "elements": [
+                { "name": "createBomb" }
+            ],
+            "character_anim": "plant"
+        },
+        "Spawn Pillar": {
+            "name": "Spawn Pillar",
+            "description": "SPAWNS a Pillar tile.\nPillars block movement.",
+            "cost": 1,
+            "range": { "name": "circle2DSnap", "units": 2 },
+            "icon": "res://assets/textures/spawn_pillar_icon.tres",
+            "elements": [
+                { "name": "createPillar" }
+            ],
+            "character_anim": "cast"
+        },
+        "Spawn Warp Field": {
+            "name": "Spawn Warp Field",
+            "description": "Create a warp field",
+            "cost": 1,
+            "range": { "name": "circle2DSnap", "units": 2 },
+            "icon": "res://assets/textures/spawn_warp_field_icon.tres",
+            "elements": [
+                { "name": "createWarpField" }
+            ],
+            "character_anim": "focus"
+        },
+        "Bulldoze": {
+            "name": "Bulldoze",
+            "description": "Move in a given direction, pushing enemies and destroying terrain along the way",
+            "cost": 2,
+            "range": { "name": "directional2DSnap", "units": 4, "obstructable": false },
+            "icon": "res://assets/textures/",
+            "elements": [
+                { 
+                    "name": "move2DSnap"
+                },
+                {
+                    "name": "trigger",
+                    "what": "clearTerrain",
+                    "on": [{ 
+                        "signal": "testStepped",
+                        "by": "move2DSnap",
+                        "params":{
+                            
+                        }
+                        },
+                        {
+
+                        }
+                    ]
+                }
+            ],
+            "character_anim": "charge"
+        }
+    }
+}
