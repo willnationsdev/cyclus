@@ -23,7 +23,10 @@ var SkillPack               = preload("res://addons/GodotSkillSystem/API/SkillPa
 var SkillUser               = preload("res://addons/GodotSkillSystem/API/SkillUser.gd")
 var SkillSystem             = preload("res://addons/GodotSkillSystem/API/SkillSystem.gd")
 
-var skillSystemTool
+# Scenes
+var SkillSystemTool         = preload("res://addons/GodotSkillSystem/Scenes/SkillSystemTool.tscn")
+
+var skillTool
 
 func has_main_screen():
 	return true
@@ -37,8 +40,8 @@ func _enter_tree():
 	add_custom_type("SkillUser",       "Node", SkillUser,       SkillUserIcon)
 	add_custom_type("SkillSystem",     "Node", SkillSystem,     SkillSystemIcon)
 
-	skillSystemTool = preload("res://addons/GodotSkillSystem/Scenes/SkillSystemTool.tscn").instance()
-	get_editor_viewport().add_child(skillSystemTool)
+	skillTool = SkillSystemTool.instance()
+	get_editor_viewport().add_child(skillTool)
 
 func _exit_tree():
 	remove_custom_type("TargetingMethod")
@@ -46,5 +49,5 @@ func _exit_tree():
 	remove_custom_type("SkillUser")
 	remove_custom_type("SkillSystem")
 
-	get_editor_viewport().remove_child(skillSystemTool)
-	skillSystemTool.queue_free()
+	get_editor_viewport().remove_child(skillTool)
+	skillTool.queue_free()

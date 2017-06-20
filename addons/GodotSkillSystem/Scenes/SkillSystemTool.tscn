@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/GodotSkillSystem/SkillSystemTool.gd" type="Script" id=1]
+[ext_resource path="res://addons/GodotSkillSystem/Scenes/SkillSystemTool.gd" type="Script" id=1]
+[ext_resource path="res://addons/GodotSkillSystem/Textures/icon_search.png" type="Texture" id=2]
+[ext_resource path="res://addons/GodotSkillSystem/Scenes/SkillTree.gd" type="Script" id=3]
+[ext_resource path="res://addons/GodotSkillSystem/Scenes/SkillDataView.tscn" type="PackedScene" id=4]
 
 [node name="SkillSystemTool" type="Control"]
 
@@ -14,8 +17,8 @@ script = ExtResource( 1 )
 
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 1378.0
-margin_bottom = 845.0
+margin_right = 1026.0
+margin_bottom = 600.0
 rect_clip_content = false
 mouse_filter = 0
 
@@ -23,16 +26,15 @@ mouse_filter = 0
 
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1370.0
-margin_bottom = 837.0
+margin_right = 1018.0
+margin_bottom = 592.0
 rect_clip_content = false
 mouse_filter = 0
 tab_align = 1
 tabs_visible = true
 
-[node name="Skills" type="PanelContainer" parent="Container/TabContainer"]
+[node name="Skills" type="Container" parent="Container/TabContainer"]
 
-visible = false
 anchor_right = 1
 anchor_bottom = 1
 margin_left = 4.0
@@ -42,33 +44,30 @@ margin_bottom = 4.0
 rect_clip_content = false
 mouse_filter = 0
 
-[node name="SkillsVSplitter" type="VSplitContainer" parent="Container/TabContainer/Skills"]
+[node name="VSplitContainer" type="VSplitContainer" parent="Container/TabContainer/Skills"]
 
-visible = false
-anchor_right = 1
-anchor_bottom = 1
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1.0
-margin_bottom = 29.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_clip_content = false
 mouse_filter = 0
 split_offset = 0
 collapsed = false
 dragger_visibility = 0
 
-[node name="SkillsToolbar" type="HBoxContainer" parent="Container/TabContainer/Skills/SkillsVSplitter"]
+[node name="SkillsToolbar" type="HBoxContainer" parent="Container/TabContainer/Skills/VSplitContainer"]
 
-margin_right = 1341.0
-margin_bottom = 20.0
+margin_right = 566.0
+margin_bottom = 32.0
 rect_clip_content = false
 mouse_filter = 1
+custom_constants/separation = 15
 alignment = 0
 
-[node name="Button" type="Button" parent="Container/TabContainer/Skills/SkillsVSplitter/SkillsToolbar"]
+[node name="AddSkill" type="Button" parent="Container/TabContainer/Skills/VSplitContainer/SkillsToolbar"]
 
-margin_right = 67.0
-margin_bottom = 20.0
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 0 )
 rect_clip_content = false
 mouse_filter = 0
 toggle_mode = false
@@ -78,49 +77,107 @@ group = null
 text = "Add Skill"
 flat = false
 
-[node name="ContentAreaHSplitter" type="HSplitContainer" parent="Container/TabContainer/Skills/SkillsVSplitter"]
+[node name="EditSkill" type="Button" parent="Container/TabContainer/Skills/VSplitContainer/SkillsToolbar"]
 
-margin_top = 32.0
-margin_right = 1341.0
-margin_bottom = 780.0
+margin_left = 115.0
+margin_right = 215.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 0 )
+rect_clip_content = false
+mouse_filter = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Edit Skill"
+flat = false
+
+[node name="SearchBar" type="HBoxContainer" parent="Container/TabContainer/Skills/VSplitContainer/SkillsToolbar"]
+
+margin_left = 230.0
+margin_right = 566.0
+margin_bottom = 32.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Container/TabContainer/Skills/VSplitContainer/SkillsToolbar/SearchBar"]
+
+margin_right = 32.0
+margin_bottom = 32.0
+rect_clip_content = false
+mouse_filter = 1
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="LineEdit" type="LineEdit" parent="Container/TabContainer/Skills/VSplitContainer/SkillsToolbar/SearchBar"]
+
+margin_left = 36.0
+margin_right = 336.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 300, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 3
+expand_to_len = false
+focus_mode = 2
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+
+[node name="ContentAreaHSplitter" type="HSplitContainer" parent="Container/TabContainer/Skills/VSplitContainer"]
+
+margin_top = 44.0
+margin_right = 566.0
+margin_bottom = 544.0
 rect_clip_content = false
 mouse_filter = 0
 split_offset = 0
 collapsed = false
 dragger_visibility = 0
+script = ExtResource( 3 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/TabContainer/Skills/SkillsVSplitter/ContentAreaHSplitter"]
+[node name="SkillTree" type="Tree" parent="Container/TabContainer/Skills/VSplitContainer/ContentAreaHSplitter"]
 
-margin_left = 12.0
-margin_right = 21.0
-margin_bottom = 748.0
+margin_right = 554.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 500 )
 rect_clip_content = false
 mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="SkillTree" type="Tree" parent="Container/TabContainer/Skills/SkillsVSplitter/ContentAreaHSplitter/MarginContainer"]
+[node name="RightContent" type="VBoxContainer" parent="Container/TabContainer/Skills/VSplitContainer/ContentAreaHSplitter"]
 
-margin_left = 8.0
-margin_right = 9.0
-margin_bottom = 748.0
-mouse_filter = 0
-
-[node name="RightContent" type="VBoxContainer" parent="Container/TabContainer/Skills/SkillsVSplitter/ContentAreaHSplitter"]
-
-margin_left = 21.0
-margin_right = 1341.0
-margin_bottom = 748.0
+margin_left = 566.0
+margin_right = 566.0
+margin_bottom = 500.0
 rect_clip_content = false
 mouse_filter = 1
 alignment = 0
 
-[node name="ViewportContainer" type="ViewportContainer" parent="Container/TabContainer/Skills/SkillsVSplitter/ContentAreaHSplitter/RightContent"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Container/TabContainer/Skills/VSplitContainer/ContentAreaHSplitter/RightContent"]
 
-margin_right = 1320.0
 rect_clip_content = false
 mouse_filter = 0
 stretch = false
 
-[node name="Effects" type="PanelContainer" parent="Container/TabContainer"]
+[node name="Panel" type="Panel" parent="Container/TabContainer/Skills/VSplitContainer/ContentAreaHSplitter/RightContent/ViewportContainer"]
+
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = false
+mouse_filter = 0
+
+[node name="SkillDataView" parent="Container/TabContainer/Skills/VSplitContainer/ContentAreaHSplitter/RightContent" instance=ExtResource( 4 )]
+
+margin_top = 4.0
+margin_right = 0.0
+margin_bottom = 4.0
+
+[node name="Effects" type="Container" parent="Container/TabContainer"]
 
 visible = false
 anchor_right = 1
@@ -136,8 +193,8 @@ mouse_filter = 0
 
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 736.0
-margin_bottom = 416.0
+margin_right = 1348.0
+margin_bottom = 787.0
 rect_clip_content = false
 mouse_filter = 0
 toggle_mode = false
