@@ -13,7 +13,7 @@ var SkillTestResult = preload("res://addons/GodotSkillSystem/API/SkillTestResult
 # data-initialized member variables
 var _data = {}
 var _effects = {}
-var _targetingMethods = {}
+var _targeting_methods = {}
 var _elements = {}
 var _skills = {}
 
@@ -23,46 +23,36 @@ func _ready():
 	if error != OK:
 		assert(0 && ("Could not open Skill System JSON file at: " + _skillSystemJsonPath))
 	_data = parse_json(f.get_as_text())
-	for effData in _data["effects"]:
-		var eff = Effect.instance()
-		eff.init(effData)
-		_effects[effData.name] = eff
-	assert(_data["effects"] != null)
-	for trgData in _data["targetingMethods"]:
-		var trg = TargetingMethod.instance()
-		trg.init(trgData)
-		_targetingMethods[trgData.name] = trg
-	assert(_data["targetingMethods"] != null)
-	for elmData in _data["elements"]:
-		var elm = Element.instance()
-		elm.init(elmData)
-		_elements[elmData.name] = elm
-	assert(_data["elements"] != null)
-	for sklData in _data["skills"]:
-		var skl = Skill.instance()
-		skl.init(sklData)
-		_skills[sklData.name] = skl
-	assert(_data["skills"] != null)
+	_effects           = import(_data["effects"], Effect)
+	_targeting_methods = import(_data["targetingMethods"], TargetingMethod)
+	_elements          = import(_data["elements"], Element)
+	_skills            = import(_data["skills"], Skill)
+
+func import(data_group, script):
+	var total = {}
+	assert(data_group != null)
+	for dat in data_group:
+		var inst = script.instance()
+		inst.init(dat)
+		total[dat.name] = inst
+	return total
+
+func _getSkillAPI(item_name, data_group, script):
+	var item = script.instance()
+	item.init(data_group[item_name])
+	return item
 
 func getEffect(name):
-	var eff = Effect.instance()
-	eff.init(_data.effects.name)
-	return eff
+	return _getSkillAPI(name, _effects, Effect)
 
 func getElement(name):
-	var elm = Element.instance()
-	elm.init(_data.elements.name)
-	return elm
+	return _getSkillAPI(name, _elements, Element)
 
 func getTargetingMethod(name):
-	var trg = TargetingMethod.instance()
-	trg.init(_data.targetingMethods.name)
-	return trg
+	return _getSkillAPI(name, _targeting_methods, TargetingMethod)
 
 func getSkill(name):
-	var skl = Skill.instance()
-	skl.init(_data.skills.name)
-	return skl
+	return _getSkillAPI(name, _skills, Skill)
 
 func testSkill(name, source, target, env, input):
 	var test = SkillTestResult.instance()
